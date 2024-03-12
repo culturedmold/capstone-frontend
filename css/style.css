@@ -161,16 +161,22 @@ th {
 }
 
 .pos {
- background-color: orange;
+ background-color: yellow;
+ color: black;
 }
 
 .neg {
+    background-color: blue;
+    color: white;
+}
+
+.small-corr {
     background-color: aqua;
 }
 
 .one-corr {
-    background-color: purple;
-    color: white;
+    background-color: orange;
+    color: black;
 }
 
 #barchart_values {

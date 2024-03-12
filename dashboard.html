@@ -33,13 +33,46 @@
             title: "Initial Chronic Heart Disease (CHD) Value Counts",
             width: 600,
             height: 400,
-            bar: {groupWidth: "95%"},
+            bar: {groupWidth: "75%"},
             legend: { position: "none" },
           };
-          var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+          var chart = new google.visualization.BarChart(document.getElementById("barchart_initial_values"));
           chart.draw(view, options);
-      }
-      </script>
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Classification", "Value", { role: "style" } ],
+                ["CHD", 3098, "orange"],
+                ["No CHD", 2479, "green"],
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                            { calc: "stringify",
+                                sourceColumn: 1,
+                                type: "string",
+                                role: "annotation" },
+                            2]);
+
+            var options = {
+                title: "Balanced Chronic Heart Disease (CHD) Value Counts",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "75%"},
+                legend: { position: "none" },
+                hAxis: {
+                    baseline: 0,
+                }
+            }
+            var chart = new google.visualization.BarChart(document.getElementById("barchart_balanced_values"));
+            chart.draw(view, options);
+        }
+    </script>
 
     <title>Dashboard</title>
 </head>
@@ -73,31 +106,41 @@
                             
                                 <tr>
                                     <td>Positive</td>
-                                    <td class="good">2473</td>
-                                <td class="bad">6</td>
+                                    <td class="good">1381</td>
+                                <td class="bad">790</td>
                                 </tr>
                                 <tr>
                                     <td>Negative</td>
-                                    <td class="bad">429</td>
-                                    <td class="good">16</td>
+                                    <td class="bad">432</td>
+                                    <td class="good">1300</td>
                                 </tr>
                             </th>
                         </tbody>
                     </table>
                     <ul>
-                        <li>Accuracy Score is computed by  </li>
+                        <li>F1 score: 68%
+                            <ul>
+                                <li>A perfectly accurate model would have an F1 score of 1, where a perfectly inaccurate model would have a score of 0. Our score of 68% exceeds our target model accuracy of 60%.</li>
+                                <li>
+                                    <a href="https://en.wikipedia.org/wiki/F-score">Learn more about F1 Score for binary classification models.</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Dataset</legend>
                 <div class="h-flexbox">
-                    <div id="barchart_values"></div>
+                    <div class="flex-container">
+                    <div id="barchart_initial_values"></div>
+                    <div id="barchart_balanced_values"></div>
+                    </div>
                     <ul>
                         <h3>Dataset Insights</h3>
                         <li>Initial (starting) dataset is unbalanced
                             <ul>
-                                <li>Training data was balanced using Smote-Tomek to improve model accuracy and usability</li>
+                                <li>Training data was balanced using Smote to improve model accuracy and usability</li>
                             </ul>
                         </li>
                         <li>Cleaning methods include dropping duplicates and removing rows with missing values</li>
