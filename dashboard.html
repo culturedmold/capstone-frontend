@@ -118,6 +118,7 @@
                         </tbody>
                     </table>
                     <ul>
+                        <h3>Model Accuracy</h3>
                         <li>F1 score: 68%
                             <ul>
                                 <li>A perfectly accurate model would have an F1 score of 1, where a perfectly inaccurate model would have a score of 0. Our score of 68% exceeds our target model accuracy of 60%.</li>
@@ -138,16 +139,19 @@
                     </div>
                     <ul>
                         <h3>Dataset Insights</h3>
-                        <li>Initial (starting) dataset is unbalanced
+                        <li>Initial (starting) dataset is unbalanced.
                             <ul>
-                                <li>Training data was balanced using Smote to improve model accuracy and usability</li>
+                                <li>Training data was balanced using Smote to improve model accuracy and usability.</li>
                             </ul>
                         </li>
-                        <li>Cleaning methods include dropping duplicates and removing rows with missing values</li>
-                        <li>Independent variable classes with extremely low (less than 0.1 or greater then -0.1) correlation to the dependent variable were dropped before training
+                        <li>Cleaning methods include dropping duplicates and removing rows with missing values.</li>
+                        <li>Independent variable classes with extremely low (less than 0.1 or greater then -0.1) correlation to the dependent variable were dropped before training.
                             <ul>
-                                <li>This did impact the correlation between other variables, but had minimal impact in F1 score and accuracy of the model, but made analyzing the data and using the model significantly easier</li>
+                                <li>This did impact the correlation between other variables, but had minimal impact in F1 score and accuracy of the model. Removing these variables made analyzing the data and using the model significantly easier.</li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="https://www.kaggle.com/datasets/aasheesh200/framingham-heart-study-dataset">Click here to view the publicly available dataset used to train this model</a>
                         </li>
                     </ul>
                 </div>
