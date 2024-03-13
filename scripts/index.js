@@ -13,6 +13,7 @@ class FormEntry {
     }
 }
 
+// VALIDATE THE FORM
 function submitForm() {
     const sex = getRadioGroupSelected('sex');
     const age = getTextInput('age');
@@ -93,10 +94,11 @@ function displayResults() {
     resultsPopup.style.display = 'block';
 }
 
+// SEND POST REQUEST TO API AND GET BACK MODEL RESULTS
 async function postFormInput(formEntryObject) {
     // let xhr = new XMLHttpRequest();
     try {
-        const response = await fetch("http://localhost:5005/run_model", {
+        const response = await fetch("https://captone-flask-backend-c449b855cc7e.herokuapp.com/run", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -109,8 +111,56 @@ async function postFormInput(formEntryObject) {
         
         console.log(resultsJson);
 
-        displayResults();
+        displayResults(resultsJson['classification'], (parseFloat(resultsJson['probability']).toFixed(2) * 100));
     } catch {
+
+        displayError();
         return;
     }
+}
+
+
+// DISPLAY RESULTS
+function displayResults(classification, probability) {
+    const overlay = document.getElementById("overlay");
+    const resultsPopup = document.getElementById("results-popup");
+
+    const resultsH2 = document.getElementById('results-h2');
+    const probaH3 = document.getElementById('proba-h3');
+
+    resultsH2.classList = "";
+    if (classification == 1) {
+        resultsH2.textContent = "High Risk of Coronary Heart Disease within 10 years";
+        resultsH2.classList.add('bad');
+    } else {
+        resultsH2.textContent = "Low Risk of Coronary Heart Disease within 10 years";
+        resultsH2.classList.add('good');
+    }
+
+    probaH3.textContent = "Probability of CHD in 10 years: " + probability + "%";
+
+    overlay.style.display = "block";
+    resultsPopup.style.display = "block";
+
+}
+
+function displayError() {
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("results-popup");
+
+    const resultsH2 = document.getElementById('results-h2');
+
+    resultsH2.textContent = "We've encountered a problem. Please try again.";
+
+    overlay.style.display = "block";
+    popup.style.display = "block";
+}
+
+function popupClose() {
+    const overlay = document.getElementById('overlay');
+    const popup = document.getElementById('results-popup');
+
+    overlay.style.display = "none";
+    popup.style.display = "none";
+    
 }

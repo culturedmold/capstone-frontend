@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./scripts/submit_form.js"></script>
+    <script src="./scripts/index.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,9 +129,21 @@
                 <a class="underlined-button" href="./dashboard.html">View Dashboard</a>
             </div>
         </div>
-
         
     </main>
+
+    <div id="overlay"></div>
     
+    <div id="results-popup">
+        <span id="popup-close" onclick="popupClose()">Close X</span>
+        <div class="popup-content">
+        <div class="flex-container">
+            <h2 id="results-h2"></h2>
+            <h3 id="proba-h3"></h3>
+            <a class="underlined-button" href="./dashboard.html">View Dashboard</a>
+        </div>
+        </div>
+    </div>
+
 </body>
 </html>
