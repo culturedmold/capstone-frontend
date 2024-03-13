@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./scripts/index.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <title>prediction</title>
+</head>
+<body>
+
+    <main>
+        <h1>Heart Disease Classification Model</h1>
+        <div id="input-form-container" class="flex-container">
+            
+            <fieldset>
+                <legend>
+                    Enter Your Information
+                </legend>
+
+                <h5>This form, prediction, and associated model should NOT be used for any real world medical application.</h5>
+                <form>
+                <fieldset>
+
+                    <legend>Demographic Information</legend>
+
+                    <div id="sex-radio-group">
+                        <label for="sex" name="sex">Sex:</label> 
+                        
+                            <label for="male">Male</label>
+                                <input type="radio" name="sex" id="sex" value="1" required>
+                            
+                            
+                            <label for="female">Female</label>
+                                <input type="radio" name="sex" id="sex" value="0">
+                    </div>
+
+                    <div id="age-input">
+                        <label for="age" name="age">Age:</label>
+                        <input id="age" type="text" name="age" required>
+                    </div>
+
+                    <div id="education-dropdown">
+                        <label for="education">Education Level:</label>
+                        <select name="education" id="education" required>
+                            <option value="1">1 - No HS Diploma or GED</option>
+                            <option value="2">2 - HS Diploma or GED</option>
+                            <option value="3">3 - Some College</option>
+                            <option value="4">3 - Bachelors Degree or Higher</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Smoking Habits</legend>
+                    <div id="smoker-radio-group">
+                        <label for="smoker" name="smoker">Current Smoker:</label>
+                        <label for="yes">Y</label>
+                        <input type="radio" name="smoker" id="smoker" value="1" required>
+                        <label for="no">N</label>
+                        <input type="radio" name="smoker" id="smoker" value="0">
+                    </div>
+
+                    <div id="cigs-input">
+                        <label for="cigs" name="cigs">Cigarettes Smoked Per Day:</label>
+                        <input id="cigs" type="text" name="cigs" required>
+                    </div>
+                </fieldset>
+
+                
+                <fieldset>
+                    <legend>Medical History</legend>
+                    <div id="bpmeds-radio-group">
+                    <label for="bpmeds" name="bpmeds">Taking Blood Pressure Medication:</label>
+                    <label for="yes">Y</label>
+                    <input type="radio" name="bpmeds" id="bpmeds" value="1" required>
+                    <label for="no">N</label>
+                    <input type="radio" name="bpmeds" id="bpmeds" value="0">
+                </div>
+
+                <div id="stroke-radio-group">
+                    <label for="stroke" name="stroke">History of Stroke(s):</label>
+                    <label for="yes">Y</label>
+                    <input type="radio" name="stroke" id="stroke" value="1" required>
+                    <label for="no">N</label>
+                    <input type="radio" name="stroke" id="stroke" value="0">
+                </div>
+
+                <div id="hypertensia-radio-group">
+                    <label for="hypertensia" name="hypertensia">Diagnosed with Hypertensia:</label>
+                    <label for="yes">Y</label>
+                    <input type="radio" name="hypertensia" id="hypertensia" value="1" required>
+                    <label for="no">N</label>
+                    <input type="radio" name="hypertensia" id="hypertensia" value="0">
+                </div>
+
+                <div id="diabetes-radio-group">
+                    <label for="diabetes" name="diabetes">Diagnosed with Diabetes:</label>
+                    <label for="yes">Y</label>
+                    <input type="radio" name="diabetes" id="diabetes" value="1" required>
+                    <label for="no">N</label>
+                    <input type="radio" name="diabetes" id="diabetes" value="0">
+                </div>
+
+                <div id="bmi-input">
+                    <label for="bmi" name="bmi">BMI:</label>
+                    <input id="bmi" type="text" name="bmi" required>
+                </div>
+                </fieldset>
+                
+                <!-- <div class="h-flexbox">
+                    
+                    <input type="reset" class="underlined-button">
+
+                </div> -->
+            
+            </form>
+        </fieldset>
+            <!-- <button onclick="submitForm()">Submit</button> -->
+            
+            <div class="h-flexbox">
+                <button class="outlined-button" onclick="submitForm()">Submit</button>
+                <a class="underlined-button" href="./dashboard.html">View Dashboard</a>
+            </div>
+        </div>
+        
+    </main>
+
+    <div id="overlay"></div>
+    
+    <div id="results-popup">
+        <span id="popup-close" onclick="popupClose()">Close X</span>
+        <div class="popup-content">
+        <div class="flex-container">
+            <h2 id="results-h2"></h2>
+            <h3 id="proba-h3"></h3>
+            <a class="underlined-button" href="./dashboard.html">View Dashboard</a>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
