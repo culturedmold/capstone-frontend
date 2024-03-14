@@ -4,7 +4,7 @@
 
 h1 {
     text-align: center;
-    font-size: 2.7rem;
+    font-size: 2.7em;
 }
 
 main {
@@ -229,4 +229,31 @@ li ul li {
 
 .popup-content {
     padding: 2em;
+}
+
+@media only screen and (max-width: 600px) {
+    .flex-container {
+        flex-direction: column;
+    }
+
+    main {
+        max-width: 100vw;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    form {
+        font-size: 12px;
+    }
+
+    .h-flexbox {
+        flex-direction: column;
+    }
+
+    .underlined-button, .outlined-button {
+        max-width: fit-content;
+    }
 }
