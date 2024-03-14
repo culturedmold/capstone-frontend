@@ -241,7 +241,7 @@ li ul li {
     }
 
     main {
-        max-width: 100vw;
+        min-width: 100vw;
         margin: auto;
     }
 
