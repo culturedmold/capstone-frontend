@@ -237,11 +237,11 @@ li ul li {
     }
 
     body {
-        margin: 0;
+        margin: 1rem;
     }
 
     main {
-        min-width: 100vw;
+        min-width: 100%;
         margin: auto;
     }
 
