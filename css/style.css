@@ -236,6 +236,10 @@ li ul li {
         flex-direction: column;
     }
 
+    body {
+        margin: 0;
+    }
+
     main {
         max-width: 100vw;
         margin: auto;
@@ -243,6 +247,8 @@ li ul li {
 
     h1 {
         font-size: 2em;
+        text-align: center;
+        margin: auto;
     }
 
     form {
