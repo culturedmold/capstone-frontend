@@ -96,7 +96,9 @@ function displayResults() {
 
 // SEND POST REQUEST TO API AND GET BACK MODEL RESULTS
 async function postFormInput(formEntryObject) {
-    // let xhr = new XMLHttpRequest();
+    // Display our loading message while we wait on the async function
+    loadingMessage();
+
     try {
         const response = await fetch("https://captone-flask-backend-c449b855cc7e.herokuapp.com/run", {
             method: 'POST',
@@ -139,8 +141,13 @@ function displayResults(classification, probability) {
 
     probaH3.textContent = "Probability of CHD in 10 years: " + probability + "%";
 
-    overlay.style.display = "block";
-    resultsPopup.style.display = "block";
+    if (!(overlay.style.display == "block")) {
+        overlay.style.display = "block";
+    };
+
+    if (!(popup.style.display == "block")) {
+        popup.style.display = "block";
+    };
 
 }
 
@@ -152,15 +159,37 @@ function displayError() {
 
     resultsH2.textContent = "We've encountered a problem. Please try again.";
 
-    overlay.style.display = "block";
-    popup.style.display = "block";
+    if (!(overlay.style.display == "block")) {
+        overlay.style.display = "block";
+    };
+
+    if (!(popup.style.display == "block")) {
+        popup.style.display = "block";
+    };
+
 }
 
 function popupClose() {
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('results-popup');
 
-    overlay.style.display = "none";
-    popup.style.display = "none";
+    if (!(overlay.style.display == "none")) {
+        overlay.style.display = "none";
+    };
+
+    if (!(popup.style.display == "none")) {
+        popup.style.display = "none";
+    };
     
+}
+
+function loadingMessage() {
+    const overlay = document.getElementById('overlay');
+    const popup = document.getElementById('results-popup');
+    const resultsH2 = document.getElementById('results-h2');
+
+    overlay.style.display = "block";
+    popup.style.display = "block";
+
+    resultsH2.textContent = "Getting Your Results...";
 }
