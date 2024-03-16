@@ -116,7 +116,7 @@ async function postFormInput(formEntryObject) {
         displayResults(resultsJson['classification'], (parseFloat(resultsJson['probability']).toFixed(2) * 100));
 
         return;
-        
+
     } catch {
         displayError();
         return;
@@ -152,8 +152,11 @@ function displayResults(classification, probability) {
 function displayError() {
     const overlay = document.getElementById("overlay");
     const popup = document.getElementById("results-popup");
-
     const resultsH2 = document.getElementById('results-h2');
+
+    const probaH3 = document.getElementById('proba-h3');
+
+    probaH3.textContent = "";
 
     resultsH2.textContent = "We've encountered a problem. Please try again.";
 
@@ -175,6 +178,9 @@ function loadingMessage() {
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('results-popup');
     const resultsH2 = document.getElementById('results-h2');
+    const probaH3 = document.getElementById('proba-h3');
+
+    probaH3.textContent = "";
 
     overlay.style.display = "block";
     popup.style.display = "block";
