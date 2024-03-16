@@ -114,8 +114,10 @@ async function postFormInput(formEntryObject) {
         console.log(resultsJson);
 
         displayResults(resultsJson['classification'], (parseFloat(resultsJson['probability']).toFixed(2) * 100));
-    } catch {
 
+        return;
+        
+    } catch {
         displayError();
         return;
     }
@@ -125,12 +127,13 @@ async function postFormInput(formEntryObject) {
 // DISPLAY RESULTS
 function displayResults(classification, probability) {
     const overlay = document.getElementById("overlay");
-    const resultsPopup = document.getElementById("results-popup");
+    const popup = document.getElementById("results-popup");
 
     const resultsH2 = document.getElementById('results-h2');
     const probaH3 = document.getElementById('proba-h3');
 
     resultsH2.classList = "";
+
     if (classification == 1) {
         resultsH2.textContent = "High Risk of Coronary Heart Disease within 10 years";
         resultsH2.classList.add('bad');
@@ -141,13 +144,8 @@ function displayResults(classification, probability) {
 
     probaH3.textContent = "Probability of CHD in 10 years: " + probability + "%";
 
-    if (!(overlay.style.display == "block")) {
-        overlay.style.display = "block";
-    };
-
-    if (!(popup.style.display == "block")) {
-        popup.style.display = "block";
-    };
+    overlay.style.display = "block";
+    popup.style.display = "block";
 
 }
 
@@ -159,13 +157,8 @@ function displayError() {
 
     resultsH2.textContent = "We've encountered a problem. Please try again.";
 
-    if (!(overlay.style.display == "block")) {
-        overlay.style.display = "block";
-    };
-
-    if (!(popup.style.display == "block")) {
-        popup.style.display = "block";
-    };
+    overlay.style.display = "block";
+    popup.style.display = "block";
 
 }
 
@@ -173,13 +166,8 @@ function popupClose() {
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('results-popup');
 
-    if (!(overlay.style.display == "none")) {
-        overlay.style.display = "none";
-    };
-
-    if (!(popup.style.display == "none")) {
-        popup.style.display = "none";
-    };
+    overlay.style.display = "none";
+    popup.style.display = "none";
     
 }
 
