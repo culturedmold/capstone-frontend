@@ -4,7 +4,15 @@
 
 h1 {
     text-align: center;
-    font-size: 2.7em;
+    color: orange;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 3rem;
+    text-shadow: 2px 2px black;
+}
+
+h3 {
+    text-align: center;
 }
 
 main {
@@ -150,14 +158,21 @@ th {
 }
 
 .good {
-    background-color: green;
-    color: white;
+    text-align: center;
+    color: green;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 2.5em;
+    text-shadow: 2px 2px black;
 }
 
 .bad {
-    background-color: orange;
+    text-align: center;
     color: red;
-    font-weight: bold;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 2.5em;
+    text-shadow: 2px 2px black;
 }
 
 .pos {
